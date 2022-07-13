@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "JakeBecker.elixir-ls",
+    "phoenixframework.phoenix",
+    "petalframework.vscode-petal-components-snippets",
+    "esbenp.prettier-vscode"
+  ]
+}

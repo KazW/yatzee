@@ -1,0 +1,20 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[elixir]": {
+    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+  },
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": true
+}

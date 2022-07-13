@@ -98,6 +98,13 @@ defmodule YatzeeWeb do
       import YatzeeWeb.ErrorHelpers
       import YatzeeWeb.Gettext
       alias YatzeeWeb.Router.Helpers, as: Routes
+
+      # Import global components
+      import YatzeeWeb.Components.{
+        ColorSchemeSwitch
+      }
+
+      use PetalComponents
     end
   end
 

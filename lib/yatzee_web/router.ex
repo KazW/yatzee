@@ -8,6 +8,7 @@ defmodule YatzeeWeb.Router do
     plug :put_root_layout, {YatzeeWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :set_color_scheme
   end
 
   pipeline :api do
@@ -18,6 +19,10 @@ defmodule YatzeeWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/live", PageLive, :index
+    live "/live/modal/:size", PageLive, :modal
+    live "/live/slide_over/:origin", PageLive, :slide_over
+    live "/live/pagination/:page", PageLive, :pagination
   end
 
   # Other scopes may use custom stacks.
@@ -52,5 +57,14 @@ defmodule YatzeeWeb.Router do
 
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  # Use this plug to set a "dark" css class on <html> element
+  defp set_color_scheme(conn, _opts) do
+    color_scheme = conn.cookies["color-scheme"] || "dark"
+
+    conn
+    |> assign(:color_scheme, color_scheme)
+    |> put_session(:color_scheme, color_scheme)
   end
 end

@@ -53,11 +53,10 @@ COPY assets assets
 
 # fetch NPM packages
 RUN npm install -g pnpm
-RUN cd assets && pnpm install
+RUN pnpm install --prefix assets
 
-# compile and cleanup assets
+# compile assets
 RUN mix assets.deploy
-RUN rm -rf assets/node_modules
 
 # Compile the release
 RUN mix compile

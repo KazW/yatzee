@@ -1,5 +1,8 @@
 {
-  "name": "yatzee-assets",
-  "version": "1.0.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@alpinejs/collapse": "^3.10.2",
+    "alpinejs": "^3.10.2",
+    "js-cookie": "^3.0.1"
+  }
 }

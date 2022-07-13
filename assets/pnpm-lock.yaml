@@ -1,0 +1,38 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@alpinejs/collapse': ^3.10.2
+  alpinejs: ^3.10.2
+  js-cookie: ^3.0.1
+
+dependencies:
+  '@alpinejs/collapse': 3.10.2
+  alpinejs: 3.10.2
+  js-cookie: 3.0.1
+
+packages:
+
+  /@alpinejs/collapse/3.10.2:
+    resolution: {integrity: sha512-ZI7ysUXPjtrdI61dyF23vNRnDLWW/BMeqrdoQtUMENHx7lsYAKvG9asFUM8hV0eF7KVQiHz/K9oV3qX2i6UXhQ==}
+    dev: false
+
+  /@vue/reactivity/3.1.5:
+    resolution: {integrity: sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==}
+    dependencies:
+      '@vue/shared': 3.1.5
+    dev: false
+
+  /@vue/shared/3.1.5:
+    resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
+    dev: false
+
+  /alpinejs/3.10.2:
+    resolution: {integrity: sha512-P6DTX78J94FgsskS3eS23s26hfb0NWQZUidBnkUK7fId1x64/kLm5E79lL3HNItUmHDCKOHvfP8EAcuCVab89w==}
+    dependencies:
+      '@vue/reactivity': 3.1.5
+    dev: false
+
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: false

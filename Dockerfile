@@ -22,15 +22,16 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 FROM ${BUILDER_IMAGE} as builder
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git \
-    && apt-get clean && rm -f /var/lib/apt/lists/*_*
+RUN apt-get update -y && apt-get install -y build-essential git curl bash
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
+RUN apt-get install nodejs
+RUN apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # prepare build dir
 WORKDIR /app
 
 # install hex + rebar
-RUN mix local.hex --force && \
-    mix local.rebar --force
+RUN mix local.hex --force && mix local.rebar --force
 
 # set build ENV
 ENV MIX_ENV="prod"
@@ -47,13 +48,16 @@ COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
 COPY priv priv
-
 COPY lib lib
-
 COPY assets assets
 
-# compile assets
+# fetch NPM packages
+RUN npm install -g pnpm
+RUN cd assets && pnpm install
+
+# compile and cleanup assets
 RUN mix assets.deploy
+RUN rm -rf assets/node_modules
 
 # Compile the release
 RUN mix compile

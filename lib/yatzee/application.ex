@@ -7,7 +7,11 @@ defmodule Yatzee.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies, [])
+
     children = [
+      # Start the cluster supervisor
+      {Cluster.Supervisor, [topologies, [name: Yatzee.ClusterSupervisor]]},
       # Start the Ecto repository
       Yatzee.Repo,
       # Start the Telemetry supervisor

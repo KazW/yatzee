@@ -33,6 +33,7 @@ defmodule Yatzee.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:libcluster, "~> 3.3"},
       {:phoenix, "~> 1.6.10"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},

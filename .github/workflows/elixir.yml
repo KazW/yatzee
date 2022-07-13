@@ -1,0 +1,61 @@
+name: Elixir CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-check:
+    name: Test and Check
+    runs-on: ubuntu-latest
+    env:
+      MIX_ENV: test
+
+    services:
+      postgres:
+        image: postgres:12-alpine
+        env:
+          POSTGRES_DB: yatzee_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: "1.13.x"
+          otp-version: "25.x"
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+
+      - name: Setup app
+        run: mix setup
+
+      - name: Run tests
+        run: mix test
+
+      - name: Check Formatting
+        run: mix format --check-formatted
+
+      - name: Check Code
+        run: mix credo -a --strict

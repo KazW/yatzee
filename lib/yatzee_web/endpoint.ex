@@ -19,9 +19,9 @@ defmodule YatzeeWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :yatzee,
-    gzip: false,
-    headers: {YatzeeWeb.Plugs.ServiceWorkerAllowed, :static_call, []},
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    gzip: true,
+    only: ~w(assets fonts favicon.ico robots.txt),
+    only_matching: ~w(service-worker)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

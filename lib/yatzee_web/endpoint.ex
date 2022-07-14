@@ -20,7 +20,7 @@ defmodule YatzeeWeb.Endpoint do
     at: "/",
     from: :yatzee,
     gzip: true,
-    only: ~w(assets fonts favicon.ico robots.txt),
+    only: ~w(assets icons fonts favicon.ico robots.txt),
     only_matching: ~w(service-worker)
 
   # Code reloading can be explicitly enabled under the

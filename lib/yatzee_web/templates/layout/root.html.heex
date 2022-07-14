@@ -4,10 +4,13 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#000000"/>
     <meta name="csrf-token" content={csrf_token_value()}>
+    <meta name="description" content="Score keeping for the game of Yatzee.">
     <%= live_title_tag assigns[:page_title] || "Yatzee", suffix: " · Phoenix Framework" %>
     <link phx-track-static rel="manifest" href={Routes.pwa_path(@conn, :manifest)}/>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <link phx-track-static rel="apple-touch-icon" href={Routes.static_path(@conn, "/assets/images/yatzee-dice-192.png")}>
     <meta phx-track-static name="service-worker-url" content={Routes.static_path(@conn, "/service-worker.js")}>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>

@@ -15,7 +15,7 @@ defmodule YatzeeWeb.Components.ColorSchemeSwitch do
     <button
       type="button"
       phx-hook="ColorThemeHook"
-      id={Ecto.UUID.generate()}
+      id="color-switcher"
       class="color-scheme text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
     >
       <svg

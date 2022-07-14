@@ -2,7 +2,6 @@
 import Cookies from 'js-cookie'
 
 window.toggleColorScheme = function () {
-  console.log('toggleColorScheme')
   let newColorScheme = Cookies.get('color-scheme') === 'dark' ? 'light' : 'dark'
   applyColorScheme(newColorScheme)
 }
@@ -29,7 +28,6 @@ window.applyColorScheme = function (colorScheme) {
       .forEach((el) => el.classList.remove('hidden'))
     document.documentElement.classList.add('dark')
     Cookies.set('color-scheme', 'dark', { expires: 9999 })
-    console.log('CSS dark theme applied')
   } else {
     document
       .querySelectorAll('.color-scheme-dark-icon')
@@ -39,7 +37,6 @@ window.applyColorScheme = function (colorScheme) {
       .forEach((el) => el.classList.add('hidden'))
     document.documentElement.classList.remove('dark')
     Cookies.set('color-scheme', 'light', { expires: 9999 })
-    console.log('CSS light theme applied')
   }
 }
 

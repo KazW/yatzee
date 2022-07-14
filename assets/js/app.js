@@ -4,9 +4,7 @@ if ('serviceWorker' in navigator) {
     .querySelector("meta[name='service-worker-url']")
     .getAttribute('content')
 
-  navigator.serviceWorker
-    .register(serviceWorkerUrl, { scope: '/' })
-    .then(() => console.log('Service worker registered!'))
+  navigator.serviceWorker.register(serviceWorkerUrl, { scope: '/' })
 }
 
 // If you want to use Phoenix channels, run `mix help phx.gen.channel`

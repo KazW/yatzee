@@ -20,6 +20,7 @@ defmodule YatzeeWeb.Endpoint do
     at: "/",
     from: :yatzee,
     gzip: false,
+    headers: {YatzeeWeb.Plugs.ServiceWorkerAllowed, :static_call, []},
     only: ~w(assets fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the

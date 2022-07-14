@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf-token" content={csrf_token_value()}>
     <%= live_title_tag assigns[:page_title] || "Yatzee", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="manifest" href={Routes.pwa_path(@conn, :manifest)}/>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <meta phx-track-static name="service-worker-url" content={Routes.static_path(@conn, "/assets/sw.js")}>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>

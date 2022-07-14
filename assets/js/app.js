@@ -1,3 +1,14 @@
+// Register service wroker
+if ('serviceWorker' in navigator) {
+  const serviceWorkerUrl = document
+    .querySelector("meta[name='service-worker-url']")
+    .getAttribute('content')
+
+  navigator.serviceWorker
+    .register(serviceWorkerUrl, { scope: '/' })
+    .then(() => console.log('Service worker registered!'))
+}
+
 // If you want to use Phoenix channels, run `mix help phx.gen.channel`
 // to get started and then uncomment the line below.
 // import "./user_socket.js"

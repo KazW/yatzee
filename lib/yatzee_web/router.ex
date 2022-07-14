@@ -19,6 +19,7 @@ defmodule YatzeeWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/splash", PageController, :splash
     live "/live", PageLive, :index
     live "/live/modal/:size", PageLive, :modal
     live "/live/slide_over/:origin", PageLive, :slide_over
@@ -29,6 +30,13 @@ defmodule YatzeeWeb.Router do
   # scope "/api", YatzeeWeb do
   #   pipe_through :api
   # end
+
+  # PWA related endpoints
+  scope "/pwa", YatzeeWeb do
+    pipe_through :api
+
+    get "/manifest", PwaController, :manifest
+  end
 
   # Enables LiveDashboard only for development
   #

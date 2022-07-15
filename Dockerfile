@@ -47,15 +47,23 @@ RUN mkdir config
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
+# Add Elixir code
 COPY priv priv
 COPY lib lib
-COPY assets assets
 
 # fetch NPM packages
+RUN mkdir assets
+COPY assets/package.json assets/pnpm-lock.yaml assets/
 RUN npm install -g pnpm
 RUN pnpm install --prefix assets
 
-# compile assets
+# Add frontend code
+COPY assets/css assets/css
+COPY assets/js assets/js
+COPY assets/vendor assets/vendor
+COPY assets/tailwind.config.js assets/
+
+# Compile assets
 RUN mix assets.deploy
 
 # Compile the release
